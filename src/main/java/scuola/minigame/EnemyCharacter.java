@@ -16,7 +16,7 @@ public class EnemyCharacter {
     
 /***********These are the characteristics of the enemy object************/
     public EnemyCharacter() {
-        this.name = "Question";
+        this.name = "Name";
         this.kind = "Kind";
         this.faction = "Faction";
         this.level = 0;
@@ -99,7 +99,11 @@ public class EnemyCharacter {
     }
 /*******************************************/
     
-    
+    /*************************** toString method *******************************************
+     * @return the character sheet when the object is called.                              *
+     * @Overr used to override the object output                                           *
+     *                                                                                     */
+    @Override
     public String toString() {
         return String.format("Enemy sheet\n" + "Enemy name: %s\nKind: %s\n"
                 + "Faction: %s\nLevel: %d\nHP: %d\nMP: %d\nEXP: %.2f",

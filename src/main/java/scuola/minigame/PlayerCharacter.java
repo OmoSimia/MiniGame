@@ -118,43 +118,47 @@ public class PlayerCharacter {
     }
 /****************************************/
     
-    /*
-     * Sends a print out for the info on the roles
-     */
+    /*************************************************************************************
+     *                    Method to print out the info on the roles                      *
+     *                                                                                   */
     public void rolesInfo() {
-        String fighter = "\nFighter\nFor those who like to rely more on instinct.\n"
+        String fighter = "\nFighter\n"
+                + "For those who like to rely more on instinct.\n"
                 + "Enter melee and try to hit as much as possible while tanking a few blows.\n"
                 + "MP halved, HP doubled.\n\n";
-        String archer = "Archer\nFor those who are fairly confident in their aim.\n"
+        String archer = "Archer\n"
+                + "For those who are fairly confident in their aim.\n"
                 + "Take a few hit from distance before the enemy can close in.\n"
                 + "Can take two hits on the first question of the opponent before losing HP.\n\n";
-        String mage = "Mage\nFor those who take pride in their knowledge and arcane arts.\n"
+        String mage = "Mage\n"
+                + "For those who take pride in their knowledge and arcane arts.\n"
                 + "Can deal devastating bows on opponents but has low HP.\n"
                 + "MP quintupled, HP at one fifth.\n\n";
         System.out.println(fighter + archer + mage);
     }
-    /*
-    *
-    */
+    /*************************************************************************************/
     
-    /*
-     * Sends a print out for the info on the races
-     */
+    /*************************************************************************************
+     *                    Method to print out the info on the races                      *
+     *                                                                                   */
     public void racesInfo() {
-        String student = "\nStudent\nThose pesky little demons.\n"
+        String student = "\nStudent\n"
+                + "Those pesky little demons.\n"
                 + "They have mostly empty heads and strong bodies, always ready to make trouble.\n"
                 + "They like to make trouble for professors regardless of damage taken.\n"
                 + "The student race has double HP and a third of the MP.\n\n";
-        String professor = "Professors\nOlder sadistic demons.\n"
+        String professor = "Professors\n"
+                + "Older sadistic demons.\n"
                 + "Their bodies have deteriorated but their heads are full of sadistic thoughts.\n"
                 + "They like to torment students with their knowledge.\n"
                 + "The professor race has triple the MP and half the HP.\n";
         System.out.println(student + professor);
     }
-    /*
-    *
-    */
+    /*************************************************************************************/
     
+    /*************************************************************************************
+     *                   Method for creating the character                               *
+     *                                                                                   */
     public void charCreation() {
         boolean okay;
         
@@ -171,9 +175,9 @@ public class PlayerCharacter {
         System.out.print("Choose a role by typing a number: ");
         do{
             if (sc.hasNext("1") || sc.hasNext("2") 
-                    || sc.hasNext("3")) {
+                    || sc.hasNext("3")) 
                 okay = true;
-            }else if(sc.hasNext("0")) {
+            else if(sc.hasNext("0")) {
                 okay = false;
                 rolesInfo();
                 sc.nextLine();
@@ -194,9 +198,9 @@ public class PlayerCharacter {
                 + "Type (0) for info on the races.\n");
         System.out.print("Choose a race by typing a number: ");
         do{
-            if (sc.hasNext("1") || sc.hasNext("2")) {
+            if (sc.hasNext("1") || sc.hasNext("2")) 
                 okay = true;
-            }else if(sc.hasNext("0")) {
+            else if(sc.hasNext("0")) {
                 okay = false;
                 racesInfo();
                 sc.nextLine();
@@ -210,26 +214,30 @@ public class PlayerCharacter {
         }while(!okay);
         this.race = races[Integer.parseInt(sc.nextLine())];
         
-        if (this.race.equals("Student")) {
+        if (this.race.equals("Student")) //changes hp or mp based on the race chosen
             this.hp = this.hp * 2;
-        }else{
+        else
             this.mp = this.mp * 3;
-        }
+        
     }//charCreation
     
-    public void experienceGained (double exp) {
+    public void experienceGained (double exp) {             //method to add experience and call the levelUp() method
         this.exp = this.exp + exp;
         System.out.println(String.format("+%.0f EXP", exp));
         levelUp();
-    }
+    }//experienceGained
     
-    private void levelUp() {
-        while (this.exp > Math.pow(this.level, 3)) {
+    private void levelUp() {                                //method to level up. Can only be accessed by the experienceGained() method.
+        while (this.exp > Math.pow(this.level, 3)) 
             this.level++;
-        }
-            
-    }
+    }//levelUp
     
+    /*************************** toString method *******************************************
+     * @return the character sheet when the object is called, can be used with print to    *
+     * make the player see his details.                                                    *
+     * @Overr used to override the object output                                           *
+     *                                                                                     */
+    @Override 
     public String toString() {
         return String.format("Character sheet\n" + "Character name: %s\nRole: %s\n"
                 + "Race: %s\nLevel: %d\nHP: %d\nMP: %d\nEXP: %.0f",
