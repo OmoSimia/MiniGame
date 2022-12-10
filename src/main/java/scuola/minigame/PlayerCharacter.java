@@ -238,7 +238,16 @@ public class PlayerCharacter {
     private void levelUp() {                                //method to level up. Can only be accessed by the experienceGained() method.
         while (this.exp > Math.pow(this.level, 3)) 
             this.level++;
-        if (this.role.equals("Fighter"))
+        if (this.role.equals("Fighter")) {
+            this.hp += 10;
+            this.mp += 3;
+        }else if (this.role.equals("Archer")) {
+            this.hp += 5;
+            this.mp += 5;
+        }else{
+            this.hp += 2;
+            this.mp += 15;
+        }
     }//levelUp
     
     /*************************** toString method *******************************************
