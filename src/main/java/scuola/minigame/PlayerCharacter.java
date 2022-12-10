@@ -191,6 +191,14 @@ public class PlayerCharacter {
         }while(!okay);
         this.role = roles[Integer.parseInt(sc.nextLine())];
         
+        if (this.role.equals("Fighter")) {
+            this.hp*=2;
+            this.mp/=2;
+        }else if (this.role.equals("Mage")) {
+            this.hp/=5;
+            this.mp*=5;
+        }
+        
         /******************** Choosing race here *************************************/
         System.out.println("\n\nGreat " + this.name 
                 + ", now for the last thing, you need to choose a race.\n" 
@@ -230,6 +238,7 @@ public class PlayerCharacter {
     private void levelUp() {                                //method to level up. Can only be accessed by the experienceGained() method.
         while (this.exp > Math.pow(this.level, 3)) 
             this.level++;
+        if (this.role.equals("Fighter"))
     }//levelUp
     
     /*************************** toString method *******************************************
