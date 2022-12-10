@@ -238,7 +238,7 @@ public class PlayerCharacter {
     private void levelUp() {                                //method to level up. Can only be accessed by the experienceGained() method.
         while (this.exp > Math.pow(this.level, 3)) {
             this.level++;
-            switch (this.role) {
+            switch (this.role) {                            //this switch adds stats based on the role and level
                 case "Fighter":
                     this.hp += 10;
                     this.mp += 3;
@@ -252,7 +252,7 @@ public class PlayerCharacter {
                     this.mp += 15;
                     break;
             }
-            switch (this.race) {
+            switch (this.race) {                            //this switch adds stats based on race and level
                 case "Student":
                     this.hp += 20;
                     this.mp += 7;
