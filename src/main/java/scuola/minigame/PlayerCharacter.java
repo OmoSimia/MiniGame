@@ -70,27 +70,27 @@ public class PlayerCharacter {
     
 /*** The getter methods for the class ***/
 
-    public String getName() {
-        return this.name;
-    }
-    public String getRole() {
-        return this.role;
-    }
-    public String getRace() {
-        return this.race;
-    }
+//    public String getName() {
+//        return this.name;
+//    }
+//    public String getRole() {
+//        return this.role;
+//    }
+//    public String getRace() {
+//        return this.race;
+//    }
     public int getLevel() {
         return this.level;
     }
-    public int getHp() {
-        return this.hp;
-    }
-    public int getMp() {
-        return this.mp;
-    }
-    public double getExp() {
-        return this.exp;
-    }
+//    public int getHp() {
+//        return this.hp;
+//    }
+//    public int getMp() {
+//        return this.mp;
+//    }
+//    public double getExp() {
+//        return this.exp;
+//    }
     
 /****************************************/
 
@@ -189,7 +189,7 @@ public class PlayerCharacter {
                 System.out.print("Choose a role by typing a number: ");
             }
         }while(!okay);
-        this.role = roles[Integer.parseInt(sc.nextLine())];
+        this.role = roles[Integer.parseInt(sc.nextLine())];  //takes a role from the roles array based on input
         
         if (this.role.equals("Fighter")) {
             this.hp*=2;

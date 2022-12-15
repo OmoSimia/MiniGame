@@ -1,5 +1,6 @@
 
 package scuola.minigame;
+import java.util.Random;
 
 /**
  *
@@ -13,6 +14,8 @@ public class EnemyCharacter {
     private int hp;
     private int mp;
     private double exp;
+    
+    Random random = new Random();
     
     /***********These are the characteristics of the enemy object********/
     public EnemyCharacter() {
@@ -50,7 +53,7 @@ public class EnemyCharacter {
    /*                                                                   *
     *********************************************************************/
     
-    /***** The getter methods for the class *****/
+    /***** The getter methods for the class *****
 
     public String getName() {
         return this.name;
@@ -98,6 +101,27 @@ public class EnemyCharacter {
         this.exp = exp;
     }
     /*******************************************/
+    
+    /******************* Method to create the enemy *********************
+    * @param playerLevel is the level of the player                     */
+    
+    public void createEnemy(int playerLevel) {
+        this.level = playerLevel - 10 + random.nextInt(20);
+        this.hp += this.level*3;
+        this.mp += this.level*2;
+        if (this.level >= 10 && this.level < 20)
+            this.name = "Goblin";
+        else if (this.level >= 20 && this.level < 30)
+            this.name = "Orc";
+        else if (this.level >= 30)
+            this.name = "Terminator";
+        else
+            this.name = "Rabbit";
+    }
+    
+   /*                                                                    *
+    **********************************************************************/
+    
     
     /*************************** toString method *******************************************
      * @return the character sheet when the object is called.                              *
