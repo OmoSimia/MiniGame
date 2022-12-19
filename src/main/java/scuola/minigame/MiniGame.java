@@ -17,7 +17,10 @@ public class MiniGame {
         System.out.println("Hello, welcome to the Mini Game!");
         
         player.charCreation();
+        enemy.createEnemy(30);
         player.experienceGained(10000.0);
+        int playerLevel = player.getLevel();
+        System.out.println(playerLevel);
         
         System.out.println("\n\n" + player + "\n");
         System.out.println(enemy);

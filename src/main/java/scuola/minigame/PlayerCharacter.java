@@ -70,27 +70,27 @@ public class PlayerCharacter {
     
 /*** The getter methods for the class ***/
 
-    public String getName() {
-        return this.name;
-    }
-    public String getRole() {
-        return this.role;
-    }
-    public String getRace() {
-        return this.race;
-    }
+//    public String getName() {
+//        return this.name;
+//    }
+//    public String getRole() {
+//        return this.role;
+//    }
+//    public String getRace() {
+//        return this.race;
+//    }
     public int getLevel() {
         return this.level;
     }
-    public int getHp() {
-        return this.hp;
-    }
-    public int getMp() {
-        return this.mp;
-    }
-    public double getExp() {
-        return this.exp;
-    }
+//    public int getHp() {
+//        return this.hp;
+//    }
+//    public int getMp() {
+//        return this.mp;
+//    }
+//    public double getExp() {
+//        return this.exp;
+//    }
     
 /****************************************/
 
@@ -189,7 +189,15 @@ public class PlayerCharacter {
                 System.out.print("Choose a role by typing a number: ");
             }
         }while(!okay);
-        this.role = roles[Integer.parseInt(sc.nextLine())];
+        this.role = roles[Integer.parseInt(sc.nextLine())];  //takes a role from the roles array based on input
+        
+        if (this.role.equals("Fighter")) {
+            this.hp*=2;
+            this.mp/=2;
+        }else if (this.role.equals("Mage")) {
+            this.hp/=5;
+            this.mp*=5;
+        }
         
         /******************** Choosing race here *************************************/
         System.out.println("\n\nGreat " + this.name 
@@ -228,8 +236,33 @@ public class PlayerCharacter {
     }//experienceGained
     
     private void levelUp() {                                //method to level up. Can only be accessed by the experienceGained() method.
-        while (this.exp > Math.pow(this.level, 3)) 
+        while (this.exp > Math.pow(this.level, 3)) {
             this.level++;
+            switch (this.role) {                            //this switch adds stats based on the role and level
+                case "Fighter":
+                    this.hp += 10;
+                    this.mp += 3;
+                    break;
+                case "Archer":
+                    this.hp += 5;
+                    this.mp += 5;
+                    break;
+                case "Mage":
+                    this.hp += 2;
+                    this.mp += 15;
+                    break;
+            }
+            switch (this.race) {                            //this switch adds stats based on race and level
+                case "Student":
+                    this.hp += 20;
+                    this.mp += 7;
+                    break;
+                case "Professor":
+                    this.hp += 10;
+                    this.mp += 30;
+                    break;
+            }
+        }
     }//levelUp
     
     /*************************** toString method *******************************************
